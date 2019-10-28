@@ -1,7 +1,7 @@
 #include<stdio.h>
 
-int main(void)
+int printMyName3(void)
 {
-print("dlaqpelemasdf")
-printf("쉣asdasdfasdf")
+        printf("my name is kim,ahn\n");
+        return 3;
 }
