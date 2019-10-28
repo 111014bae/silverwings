@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-main()
+int main(void)
 {
-print("쉣")
+printf("쉣")
 }
