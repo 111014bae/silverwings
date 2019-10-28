@@ -2,5 +2,5 @@
 
 main()
 {
-print("쉣")
+print("dlaqpelem")
 }
