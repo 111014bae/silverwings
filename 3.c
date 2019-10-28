@@ -1,6 +1,7 @@
 #include<stdio.h>
 
-int main(void)
+int printMyName3(void)
 {
-printf("쉣")
+        printf("my name is kim\n");
+        return 3;
 }
