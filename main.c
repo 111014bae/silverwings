@@ -2,5 +2,7 @@
 
 int main(void)
 {
-	printf("Hello");
+	printf("Hello"\n);
+	
+	pirntf("쒯"):
 }
