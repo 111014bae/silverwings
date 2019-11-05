@@ -1,3 +1,3 @@
-printMyName1(void);
-printmyName2(void);
-printMyName3(void); //김세훈
+int printMyName1(void);
+int printmyName2(void);
+int printMyName3(void); //김세훈
