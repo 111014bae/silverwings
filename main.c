@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include"myproject.h"
+#include"myProject.h"
 
 int main(void)
 {
@@ -8,7 +8,7 @@ int main(void)
 	
 	pirntf("쒯"):
 =======
-	printf("chief name is[김세훈]\n");
+	printf("chief name is[이찬영]\n");
 	printMyname1();
 	printMyname2();
 	printMyName3(); //kim
