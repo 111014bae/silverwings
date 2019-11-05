@@ -1,4 +1,5 @@
-#include<stdio.h>
+#include <stdio.h>
+#include "myProject.h"
 
 int printMyName3(void)
 {
