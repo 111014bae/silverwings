@@ -3,6 +3,6 @@
 
 int printMyName2(void)
 {
-        printf("my name is [배성우]\n");
+        printf("my name is bae\n");
         return 1;
 }
