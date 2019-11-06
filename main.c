@@ -8,5 +8,6 @@ int main(void)
 	printMyName1();
 	printMyName2();
 	printMyName3(); //kim
+	printMyName4();
 
 }
