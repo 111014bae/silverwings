@@ -12,3 +12,6 @@ main.o : main.c myProject.h
 
 3.o : 3.c myProject.h
 	gcc -c 3.c
+
+4.o : 4.c myProject.h
+	gcc -c 4.c
