@@ -237,4 +237,241 @@ int main(void)
 	
 	while(1){
 		call = button();	//mode를 선택하기 위한 button입력
+		 
+		if(call==2||call == 3 || call == 4){
+      Pic("help.bmp");
+      linenum1("Manual");
+      linenum2("3second wait");
+      usleep(1000*3000);
+   }
+   
+   if(call == 2){
+      timer = 0;
+      num = 3;
+      linenum1("practice");
+      linenum2("mode");
+      
+      pthread_create (&fnd, NULL,  &fndcount, NULL);
+      
+      while(1){
+         ledOnOff(correct,1);
+        
+            int random = rand()%n;   //난수 생성
+            
+            switch(random){
+            case 0 : 
+               Pic("search.bmp");
+               searchp:
+               ledOnOff(correct,1);
+               call = button();
+            
+               if(call == 1){
+                  goto home;
+               }
+               else if(call == 2){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("search.bmp");
+                  goto searchp;
+               }
+               else if(call == 3){
+                  printf("%d\n", call);
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto searchp;
+               }
+            
+            case 1 : 
+               Pic("menu.bmp");
+               menup :
+               ledOnOff(correct,1);
+               call = button();
+            
+               if(call == 1){
+                  goto home;
+               }
+               else if(call == 2){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("menu.bmp");
+                  goto menup;
+               }
+               else if(call == 4){
+                  printf("%d\n", call);
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto menup;
+               }
+            
+            case 2 :
+               Pic("volup.bmp");
+               volupp:
+               ledOnOff(correct,1);
+               call = button();
+            
+               if(call == 1){
+                  goto home;
+               }
+               else if(call == 2){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("volup.bmp");
+                  goto volupp;
+               }
+               else if(call == 5){
+                  printf("%d\n", call);
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto volupp;
+               }
+         
+            case 3 :
+               Pic("voldown.bmp"); 
+               voldownp :
+               ledOnOff(correct,1);
+               call = button();
+            
+               if(call == 1){
+                  goto home;
+               }   
+               else if(call == 2){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("voldown.bmp"); 
+                  goto voldownp;
+               }
+               else if(call == 6){
+                  printf("%d\n", call);
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto voldownp;
+               }
+            
+            case 4 :
+               Pic("up.bmp"); 
+               upp :
+               ledOnOff(correct,1);
+               b = touch();
+            
+               if((b.x > 0 && b.x < 200) && (b.y > 400 && b.y < 600)){
+                  goto home;
+               }   
+               else if((b.x > 0 && b.x < 200) && (b.y > 0 && b.y < 200)){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("up.bmp"); 
+                  goto upp;
+               }
+               else if((b.x > 824 && b.x < 1024) && (b.y > 150 && b.y < 300)){
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto upp;
+               }
+            
+            case 5 :
+               Pic("down.bmp"); 
+               downp:
+               ledOnOff(correct,1);
+               c = touch();
+            
+               if((c.x > 0 && c.x < 200) && (c.y > 400 && c.y < 600)){
+                  goto home;
+               }   
+               else if((c.x > 0 && c.x < 200) && (c.y > 0 && c.y < 200)){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("down.bmp"); 
+                  goto downp;
+               }
+               else if((c.x > 824 && c.x < 1024) && (c.y > 300 && c.y < 450)){
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto downp;
+               }
+            
+            case 6 :
+               Pic("left.bmp"); 
+               leftp :
+               ledOnOff(correct,1);
+               d = touch();
+            
+               if((d.x > 0 && d.x < 200) && (d.y > 400 && d.y < 600)){
+                  goto home;
+               }   
+               else if((d.x > 0 && d.x < 200) && (d.y > 0 && d.y < 200)){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("left.bmp"); 
+                  goto leftp;
+               }
+               else if((d.x > 824 && d.x < 1024) && (d.y > 450 && d.y < 600)){
+                  correct++; 
+                  continue;
+               }   
+               else{
+                  wrong();
+                  goto leftp;
+               }
+         
+            case 7 :
+               Pic("right.bmp"); 
+               rightp :
+               ledOnOff(correct,1);
+               e = touch();
+         
+               if((e.x > 0 && e.x < 200) && (e.y > 400 && e.y < 600)){
+                  goto home;
+               }   
+               else if((e.x > 0 && e.x < 200) && (e.y > 0 && e.y < 200)){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("right.bmp"); 
+                  goto rightp;
+               }
+               if((e.x > 824 && e.x < 1024) && (e.y > 0 && e.y < 150)){
+                  correct++; 
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto rightp;
+               }
+            
+            case 8 :
+               Pic("ball.bmp");
+               Gyro();
+               correct++; 
+               ledOnOff(correct,1);
+            }   //switch
+      }   //for
+   }
+   
+   if(call == 3){
+      timer = 0;
+      num = 3;
+      ledOnOff(correct,1);
+      
+      pthread_create (&fnd, NULL,  &fndcount, NULL);
+      
+      for(int i=0; i < 10; i++){
+         linenum1("stage1");
+            linenum2("start!!!!");
 		
