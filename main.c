@@ -715,3 +715,238 @@ int main(void)
             linenum1("stage1");
             linenum2("start!!!!");
          }
+			else if(level == 2){
+				num = 4;
+				timer = 40;
+				pthread_create (&fnd, NULL,  &fndcount, NULL);
+				linenum1("stage2");
+				linenum2("start!!!!");
+			}
+			else{
+				num = 4;
+				timer = 20;
+				pthread_create (&fnd, NULL,  &fndcount, NULL);
+				linenum1("stage3");
+				linenum2("start!!!!");
+			}
+			
+			for(int i=0; i < 10; i++){
+				int random = rand()%n;   //난수 생성
+				
+				switch(random){
+					case 0 : 
+						Pic("search.bmp");
+						searchtime:
+						call = button();
+						
+						if(call == 1){
+							goto home;
+						}
+						else if(call == 2){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("search.bmp");
+							goto searchtime;
+						}
+						else if(call == 3){
+							printf("%d\n", call);
+							continue;
+						}
+						else{
+							wrong();
+							goto searchtime;
+						}
+						
+					case 1 : 
+						Pic("menu.bmp");
+						menutime :
+						call = button();
+						
+						if(call == 1){
+							goto home;
+						}
+						else if(call == 2){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("menu.bmp");
+							goto menutime;
+						}	
+						else if(call == 4){
+							printf("%d\n", call);
+							continue;
+						}
+						else{
+							wrong();
+							goto menutime;
+						}
+						
+					case 2 :
+						Pic("volup.bmp");
+						voluptime :
+						call = button();
+						
+						if(call == 1){
+							goto home;
+						}
+						else if(call == 2){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("volup.bmp");
+							goto voluptime;
+						}
+						else if(call == 5){
+							printf("%d\n", call);
+							continue;
+						}
+						else{
+							wrong();
+							goto voluptime;
+						}
+						
+					case 3 :
+						Pic("voldown.bmp"); 
+						voldowntime :
+						call = button();
+						
+						if(call == 1){
+							goto home;
+						}   
+						else if(call == 2){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("voldown.bmp"); 
+							goto voldowntime;
+						}
+						else if(call == 6){
+							printf("%d\n", call);
+							continue;
+						}
+						else{
+							wrong();
+							goto voldowntime;
+						}
+						
+					case 4 :
+						Pic("up.bmp"); 
+						uptime :
+						b = touch();
+						
+						if((b.x > 0 && b.x < 200) && (b.y > 400 && b.y < 600)){
+							goto home;
+						}   
+						else if((b.x > 0 && b.x < 200) && (b.y > 0 && b.y < 200)){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("up.bmp"); 
+							goto uptime;
+						}
+						else if((b.x > 824 && b.x < 1024) && (b.y > 150 && b.y < 300)){
+							continue;
+						}
+						else{
+							wrong();
+							goto uptime;
+						}
+						
+					case 5 :
+						Pic("down.bmp"); 
+						downtime :
+						c = touch();
+						
+						if((c.x > 0 && c.x < 200) && (c.y > 400 && c.y < 600)){
+							goto home;
+						}   
+						else if((c.x > 0 && c.x < 200) && (c.y > 0 && c.y < 200)){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("down.bmp"); 
+							goto downtime;
+						}
+						else if((c.x > 824 && c.x < 1024) && (c.y > 300 && c.y < 450)){
+							continue;
+						}
+						else{
+							wrong();
+							goto downtime;
+						}
+						
+					case 6 :
+						Pic("left.bmp"); 
+						lefttime :
+						d = touch();
+						
+						if((d.x > 0 && d.x < 200) && (d.y > 400 && d.y < 600)){
+							goto home;
+						}   
+						else if((d.x > 0 && d.x < 200) && (d.y > 0 && d.y < 200)){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("left.bmp"); 
+							goto lefttime;
+						}
+						else if((d.x > 824 && d.x < 1024) && (d.y > 450 && d.y < 600)){
+							continue;
+						}
+						else{
+							wrong();
+							goto lefttime;
+						}
+						
+					case 7 :
+						Pic("right.bmp"); 
+						righttime :
+						e = touch();
+						
+						if((e.x > 0 && e.x < 200) && (e.y > 400 && e.y < 600)){
+							goto home;
+						}   
+						else if((e.x > 0 && e.x < 200) && (e.y > 0 && e.y < 200)){
+							Pic("pause.bmp");
+							usleep(1000*5000);
+							Pic("right.bmp"); 
+							goto righttime;
+						}
+						if((e.x > 824 && e.x < 1024) && (e.y > 0 && e.y < 150)){
+							continue;
+						}
+						else{
+							wrong();
+							goto righttime;
+						}
+						
+					case 8 :
+						Pic("ball.bmp");
+						Gyro();
+				}
+			
+			}
+			num =0;
+			pthread_join(fnd, (void *)&count);
+			
+			if(level == 3){
+				break;
+			}
+			
+			Pic("level.bmp");
+			linenum1("Stage Clear");
+			linenum2("3second wait");
+			usleep(1000*3000);
+		}
+	} 
+	
+  
+   Pic("clear.bmp");	//stage가 클리어되면 clear.bmp 사진 표시
+   linenum1("Congratulations");
+   linenum2("Misson Clear");
+   close (conFD);
+   return 0;	//main문 종료
+   
+   
+	home : {	//home키가 눌리면 gameover.bmp의 사진을 보여준다.
+		Pic("gameover.bmp");
+		linenum1("You Lose");
+		linenum2("Game Over!!!!");
+		
+		return 0;	//함수 종료
+	}
+}
