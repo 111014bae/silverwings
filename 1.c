@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>  //헤더파일
 #include "myProject.h"
 
 int printMyName1(void) //1~4중 하나. 파일이름에 맞게 할 것
