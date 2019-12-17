@@ -474,4 +474,244 @@ int main(void)
       for(int i=0; i < 10; i++){
          linenum1("stage1");
             linenum2("start!!!!");
-		
+	      
+
+	             int random = rand()%n;   //난수 생성
+            
+            switch(random){
+            case 0 : 
+               Pic("search.bmp");
+               search:
+               ledOnOff(correct,1);
+               call = button();
+            
+               if(call == 1){
+                  goto home;
+               }
+               else if(call == 2){
+                  Pic("pause.bmp");
+                  usleep(1000*5000);
+                  Pic("search.bmp");
+                  goto search;
+               }
+               else if(call == 3){
+                  printf("%d\n", call);
+                  correct++; 
+                  ledOnOff(correct,1);
+                  continue;
+               }
+               else{
+                  wrong();
+                  goto search;
+               }
+            
+            case 1 : 
+               Pic("menu.bmp");
+               menu :
+               ledOnOff(correct,1);
+               call = button();
+            
+            if(call == 1){
+               goto home;
+            }
+            else if(call == 2){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("menu.bmp");
+               goto menu;
+            }
+            else if(call == 4){
+               printf("%d\n", call);
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto menu;
+            }
+            
+         case 2 :
+            Pic("volup.bmp");
+            volup :
+            ledOnOff(correct,1);
+            call = button();
+            
+            if(call == 1){
+               goto home;
+            }
+            else if(call == 2){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("volup.bmp");
+               goto volup;
+            }
+            else if(call == 5){
+               printf("%d\n", call);
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto volup;
+            }
+         case 3 :
+            Pic("voldown.bmp"); 
+            voldown :
+            ledOnOff(correct,1);
+            call = button();
+            
+            if(call == 1){
+               goto home;
+            }   
+            else if(call == 2){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("voldown.bmp"); 
+               goto voldown;
+            }
+            else if(call == 6){
+               printf("%d\n", call);
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto voldown;
+            }
+         case 4 :
+         
+            Pic("up.bmp"); 
+            up :
+            ledOnOff(correct,1);
+            b = touch();
+            
+            if((b.x > 0 && b.x < 200) && (b.y > 400 && b.y < 600)){
+               goto home;
+            }   
+            else if((b.x > 0 && b.x < 200) && (b.y > 0 && b.y < 200)){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("up.bmp"); 
+               goto up;
+            }
+            else if((b.x > 824 && b.x < 1024) && (b.y > 150 && b.y < 300)){
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto up;
+            }
+         case 5 :
+            Pic("down.bmp"); 
+            down :
+            ledOnOff(correct,1);
+            c = touch();
+            
+            if((c.x > 0 && c.x < 200) && (c.y > 400 && c.y < 600)){
+               goto home;
+            }   
+            else if((c.x > 0 && c.x < 200) && (c.y > 0 && c.y < 200)){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("down.bmp"); 
+               goto down;
+            }   
+            else if((c.x > 824 && c.x < 1024) && (c.y > 300 && c.y < 450)){
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto down;
+            }
+            
+         case 6 :
+            Pic("left.bmp"); 
+            left :
+            ledOnOff(correct,1);
+            d = touch();
+            
+            if((d.x > 0 && d.x < 200) && (d.y > 400 && d.y < 600)){
+               goto home;
+            }   
+            else if((d.x > 0 && d.x < 200) && (d.y > 0 && d.y < 200)){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("left.bmp"); 
+               goto left;
+            }      
+            else if((d.x > 824 && d.x < 1024) && (d.y > 450 && d.y < 600)){
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto left;
+            }
+               
+         case 7 :
+            Pic("right.bmp"); 
+            right :
+            ledOnOff(correct,1);
+            e = touch();
+            
+            if((e.x > 0 && e.x < 200) && (e.y > 400 && e.y < 600)){
+               goto home;
+            }   
+            else if((e.x > 0 && e.x < 200) && (e.y > 0 && e.y < 200)){
+               Pic("pause.bmp");
+               usleep(1000*5000);
+               Pic("right.bmp"); 
+               goto right;
+            }
+            else if((e.x > 824 && e.x < 1024) && (e.y > 0 && e.y < 150)){
+               correct++; 
+               ledOnOff(correct,1);
+               continue;
+            }
+            else{
+               wrong();
+               goto right;
+            }
+            
+         case 8 :
+            Pic("ball.bmp");
+            Gyro();
+            correct++; 
+            ledOnOff(correct,1);
+         }   //switch
+      }   //for
+      num =0;
+      pthread_join(fnd, (void *)&count);
+      printf("%d\n", count);
+   
+      if(count < 15){
+         Pic("great.bmp");
+         usleep(1000*3000);
+      }
+      else if(count > 15 && count < 25){
+         Pic("good.bmp");
+         usleep(1000*3000);
+      }
+      else{
+         Pic("ok.bmp");
+         usleep(1000*3000);
+      }
+   }
+   
+   else if(call == 4){   //button의 값이 4라면 Time Attack모드 실행, 중간에 종료하려면 button사진에서의 home키 or touch사진에서의 home키 터치
+      for(int level = 1; level < 4; level++){      //level에 따라 시간을 줄인다.
+         if(level == 1){
+            num = 4;   //timer의 시간부터 1초씩 감소
+            timer = 60;
+            pthread_create (&fnd, NULL,  &fndcount, NULL);
+            linenum1("stage1");
+            linenum2("start!!!!");
+         }
