@@ -134,14 +134,6 @@ void bitmapSe(char Pic[])
         exit(1);
     }
 
-    // fb clear - black
-    for(coor_y = 0; coor_y < screen_height; coor_y++) {
-        ptr =   (unsigned long *)pfbmap + (screen_width * coor_y);
-        for(coor_x = 0; coor_x < screen_width; coor_x++)
-        {
-            *ptr++  =   0x000000;
-        }
-    }
 
 // direction for image generating : (0,0)-> (1,0)-> (2,0)-> ...-> (row, column)
     for(coor_y = 0; coor_y < rows; coor_y++) {
