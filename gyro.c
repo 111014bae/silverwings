@@ -17,9 +17,6 @@
 
 #define GYROPATH "/sys/class/misc/FreescaleGyroscope/"
 
-  /* char Pic[1000] = "ball.bmp";*/
-   
-
 int GyroDo(void)
 {
    while(1)
